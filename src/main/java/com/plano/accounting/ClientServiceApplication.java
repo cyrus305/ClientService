@@ -1,4 +1,4 @@
-package com.plano.accounting.ClientService;
+package com.plano.accounting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
