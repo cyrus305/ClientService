@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.plano.accounting.entity.Client;
 import com.plano.accounting.entity.ClientType;
+import com.plano.accounting.exception.ClientNotFoundException;
 import com.plano.accounting.service.ClientService;
 
 @RestController
@@ -32,7 +33,7 @@ public class ClientController {
 		Client client = clientService.getClientById(clientId);
 
 		if (client == null) {
-			throw new RuntimeException("client with given id not found");
+			throw new ClientNotFoundException("client with given id not found");
 		}
 		return client;
 	}
@@ -42,7 +43,7 @@ public class ClientController {
 		List<Client> client = clientService.getClientByType(clientType);
 
 		if (client == null) {
-			throw new RuntimeException("client with given id not found");
+			throw new ClientNotFoundException("client with given client-type not found");
 		}
 		return client;
 	}
