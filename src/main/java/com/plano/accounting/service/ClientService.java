@@ -13,6 +13,6 @@ public interface ClientService {
 	
 	public List<Client> getClientByType(ClientType type);
 	
-	public void saveClient(Client client);
+	public Client saveClient(Client client);
 
 }

@@ -15,7 +15,7 @@ public class ClientServiceImpl implements ClientService {
 
 	@Autowired
 	private ClientDAO clientDAO;
-	
+
 	@Override
 	@Transactional
 	public List<Client> findAll() {
@@ -36,8 +36,8 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	@Transactional
-	public void saveClient(Client client) {
-		clientDAO.saveClient(client);
+	public Client saveClient(Client client) {
+		return clientDAO.saveClient(client);
 	}
 
 }

@@ -47,9 +47,10 @@ public class ClientDAOImpl implements ClientDAO {
 	}
 
 	@Override
-	public void saveClient(Client client) {
+	public Client saveClient(Client client) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		currentSession.saveOrUpdate(client);
+		return client;
 	}
 
 }

@@ -3,6 +3,8 @@ package com.plano.accounting.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +31,13 @@ public class ClientController {
 	}
 
 	@GetMapping("/clients/{clientId}")
-	public Client getClientById(@PathVariable int clientId) {
+	public ResponseEntity<Client> getClientById(@PathVariable int clientId) {
 		Client client = clientService.getClientById(clientId);
 
 		if (client == null) {
 			throw new ClientNotFoundException("client with given id not found");
 		}
-		return client;
+		return new ResponseEntity<Client>(client, HttpStatus.OK);
 	}
 
 	@GetMapping("clients/search")
@@ -49,10 +51,9 @@ public class ClientController {
 	}
 
 	@PostMapping("/clients")
-	public Client createClient(@RequestBody Client client) {
+	public ResponseEntity<Client> createClient(@RequestBody Client client) {
 		clientService.saveClient(client);
-		return client;
-
+		return new ResponseEntity<Client>(client, HttpStatus.CREATED);
 	}
 
 }

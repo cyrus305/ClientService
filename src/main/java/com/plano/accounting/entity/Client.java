@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "client")
@@ -19,10 +20,11 @@ public class Client {
 	public int clientId;
 
 	@Column(name = "client_name")
+	@NotNull
 	private String clientName;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "client_type", length = 10)
+	@Column(name = "client_type", length = 10, nullable = false)
 	private ClientType clientType;
 
 	@Column(name = "email")
